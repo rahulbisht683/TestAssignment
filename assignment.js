@@ -44,7 +44,7 @@ function Checkout(pricingRules) {
       // Apply bulk discount if applicable
       if (
         pricingRules[item].bulkDiscount &&
-        quantity >= pricingRules[item].bulkDiscount.quantity
+        quantity > pricingRules[item].bulkDiscount.quantity
       ) {
         const discountedPrice = pricingRules[item].bulkDiscount.discountedPrice;
         totalPrice += discountedPrice * quantity;
@@ -74,9 +74,13 @@ function Checkout(pricingRules) {
 
 // Usage example
 const co = new Checkout(pricingRules);
-co.scan("op10");
+co.scan("op11");
+co.scan("op11");
+co.scan("op11");
+co.scan("op11");
+co.scan("op11");
 co.scan("buds");
 co.scan("buds");
-co.scan("buds");
+co.scan("wtch");
 
 console.log(co.total());
