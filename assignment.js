@@ -28,8 +28,10 @@ function Checkout(pricingRules) {
 
   // Scan an item and add it to the cart
   this.scan = function (item) {
-    cart[item] = cart[item] ? cart[item] + 1 : 1;
-    // console.log(cart)
+    if (pricingRules[item]) {
+      cart[item] = cart[item] ? cart[item] + 1 : 1;
+      // console.log(cart)
+    }
   };
 
   // Calculate the total price
@@ -74,6 +76,7 @@ function Checkout(pricingRules) {
 
 // Usage example
 const co = new Checkout(pricingRules);
+
 co.scan("op11");
 co.scan("op11");
 co.scan("op11");
@@ -81,6 +84,7 @@ co.scan("op11");
 co.scan("op11");
 co.scan("buds");
 co.scan("buds");
+
 co.scan("wtch");
 
 console.log(co.total());
